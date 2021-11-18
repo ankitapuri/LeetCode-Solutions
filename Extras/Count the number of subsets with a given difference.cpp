@@ -1,3 +1,4 @@
+/*  link of ques: https://leetcode.com/discuss/interview-question/1271034/count-no-of-subsets-with-given-difference-dp */
 class Solution {
 public:
     bool isPossible(vector<int>&nums,int curr,int targetsum,unordered_map<string,bool>&mp)
