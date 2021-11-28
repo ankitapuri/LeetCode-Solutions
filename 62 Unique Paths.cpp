@@ -2,8 +2,8 @@ class Solution {
 public:
     int paths(int m,int n,int curr_row,int curr_col,unordered_map<string,int>&mp)
     {
-        if(m==curr_row && n==curr_col) return 1;
-        if(curr_row > m || curr_col> n) return 0;
+        if(m-1==curr_row && n-1==curr_col) return 1;
+        if(curr_row >= m || curr_col>= n) return 0;
         string currkey = to_string(curr_row)+"_"+to_string(curr_col);
         if(mp.find(currkey)!=mp.end())
             return mp[currkey];
@@ -14,7 +14,7 @@ public:
     }
     int uniquePaths(int m, int n) {
         unordered_map<string,int>mp;
-        return paths(m-1,n-1,0,0,mp);
+        return paths(m,n,0,0,mp);
         
     }
 };
