@@ -20,17 +20,20 @@ public:
 
 class Solution {
 public:
-    vector<int>res;
     vector<int> preorder(Node* root) {
-        if(root==NULL) return res;
-        res.push_back(root->val);
+        vector<int>ans;
+        Preorder(root,ans);
+        return ans;
+    }
+    void Preorder(Node* root, vector<int>&ans)
+    {
+        if(root==NULL) return;
+        ans.push_back(root->val);
         for(int i=0;i<root->children.size();i++)
         {
-            preorder(root->children[i]);
-            
+           Preorder(root->children[i],ans);          
+        
         }
-        
-        return res;
-        
+        return;
     }
 };
