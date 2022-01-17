@@ -11,17 +11,15 @@
  */
 class Solution {
 public:
-    bool check(TreeNode*root,int sum,int target)
-    {
-        if(root==NULL) return false;
-        if(((sum+=root->val)==target) &&(root->left==NULL && root->right==NULL))
-            return true;
-        
-        bool left=check(root->left,sum,target);
-        bool right=check(root->right,sum,target);
-        return left or right;
-    }
     bool hasPathSum(TreeNode* root, int targetSum) {
-        return check(root,0,targetSum);
+        return isPossible(root,targetSum,0);
+    }
+    bool isPossible(TreeNode* root,int target , int sum)
+    {
+        if(root == NULL) return false;
+        if(root->left == NULL && root->right==NULL)
+            return sum+root->val == target;
+     return isPossible(root->left,target,sum+root->val) || isPossible(root->right,target,sum+root->val) ;
+        
     }
 };
